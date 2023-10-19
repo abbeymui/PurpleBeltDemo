@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    //Object that we will attach to the script for spawning object
     [Header("Spikes Object for controlling the game")]
     public GameObject spikes;
-    [Header("Default height")]
+    //Height position of the spikes
+    [Header("Default Height")]
     public float height;
-
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("instantiateObjects", 1f, 4f);
+        //Start function repeating every 4 seconds
+        InvokeRepeating("InstantiateObjects", 1f, 4f);
     }
 
     // Update is called once per frame
@@ -21,8 +23,10 @@ public class Spawner : MonoBehaviour
         transform.position = new Vector3(5, Random.Range(-height, height), 0);
     }
 
+    //InstantiateObjects Function
     void InstantiateObjects()
     {
+        //Spawn object by position and rotation
         Instantiate(spikes, transform.position, transform.rotation);
     }
 }
